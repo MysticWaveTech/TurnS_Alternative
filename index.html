@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radionics App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        button {
+            background: #6200ea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #3700b3;
+        }
+        .output {
+            margin-top: 20px;
+            background: #2a2a2a;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Radionics App</h1>
+        <p id="status">Status: Waiting...</p>
+        <button id="activateButton">Activate Rule</button>
+        <div class="output">
+            <p id="result">Your turn will always remain active.</p>
+        </div>
+    </div>
+    <script>
+        // Set the state to always enforce the rule
+        let enforceRule = true;
+
+        // Simulate calculating an advantage (for demonstration)
+        function calculateAdvantage() {
+            return Math.floor(Math.random() * 100); // Random advantage value
+        }
+
+        // Function to enforce the rule
+        function enforceTurn() {
+            if (enforceRule) {
+                const advantage = calculateAdvantage();
+                const statusElement = document.getElementById('status');
+                const resultElement = document.getElementById('result');
+
+                // Update the UI
+                statusElement.textContent = `Status: Enforcing rule... (Advantage: ${advantage}, Ignored)`;
+                resultElement.textContent = "Your turn will always remain active.";
+            }
+        }
+
+        // Add an event listener to the button
+        document.getElementById('activateButton').addEventListener('click', enforceTurn);
+    </script>
+</body>
+</html>
